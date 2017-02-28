@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <br/><br/><br/>
+  <br/><br/>
+
+  <div class="row">
+    <div class="col-md-8">
+      <h1>{{ school.name}}</h1>
+
+      <div> {{ school.description }}</div>
+
+      <hr>
+
+      <h1>Courses</h1>
+
+      {% for course in courses %}
+      <h3>{{ course.area_of_study }}</h3>
+      <p>{{ course.programme|title }}</p>
+      <hr>
+      {% endfor %}
+    </div>
+
+    <div class="col-md-4">
+      <h3>Looking for university? Talk to us now.</h3>
+
+      <form action="{% url 'save_enquiry' %}" method="POST">
+        {% csrf_token %}
+        <input name="interest" type="text" class="form-control" placeholder="What are you interested to study?">
+        <br/>
+        <textarea name="question" type="text" class="form-control" placeholder="Your question"></textarea>
+        <br/>
+        <h4>About You</h4>
+        <br/>
+        <input name="name" type="text" class="form-control" placeholder="Your name">
+        <br/>
+        <input name="email" type="text" class="form-control" placeholder="Your email address">
+        <br/>
+        <input name="number" type="text" class="form-control" placeholder="Your contact number">
+        <br/>
+
+        <input type="submit" value="Contact Us Now" class="btn btn-primary"/>
+      </form>
+    </div>
+
+  <div>
+
+</div>
+{% endblock %}

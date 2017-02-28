@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <br/><br/><br/>
+  <br/><br/>
+
+  <div class="row">
+
+    {% for school in results %}
+    <div class="col-sm-6 col-md-6">
+      <div class="thumbnail">
+        <a href="{% url 'detail' school.id %}">
+          <img src="/static/images/us.jpg" alt="...">
+        </a>
+
+        <div class="caption">
+          <h4>{{ school.name }}</h4>
+          <p>{{ school.country }}</p>
+          <p>{{ school.description }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
